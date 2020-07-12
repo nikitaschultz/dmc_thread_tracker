@@ -1,28 +1,28 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template lang="html">
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ThreadsService from './services/ThreadsService.js';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "app",
+  data(){
+    return {
+      threads: null;
+    }
+  },
+  mounted(){
+    this.fetchThreads();
+  },
+  methods: {
+    fetchThreads(){
+      ThreadsService.getThreads()
+      .then(threads => this.threads = threads)
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css" scoped>
 </style>

@@ -13,6 +13,7 @@ MongoClient.connect('mongodb://localhost:27017')
     const db = client.db('dmc');
     const threadsCollection = db.collection('threads');
     const threadsRouter = createRouter(threadsCollection);
+    app.use('/api/threads', threadsRouter);
   })
   .catch(console.err);
 
